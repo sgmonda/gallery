@@ -4,12 +4,15 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "serve": "darko serve",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "prebuild": "cp -R node_modules/photoswipe/dist/ assets/photoswipe && cp -R node_modules/photoswipe/website/test/ assets/photoswipe/test",
+    "build": "npm run prebuild && darko build --verbose --trace",
+    "dev": "npm run prebuild && darko serve --watch --verbose --trace"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "commander": "^3.0.2",
+    "component": "^1.1.0",
     "darko": "^0.3.6",
     "photoswipe": "^4.1.3"
   }
